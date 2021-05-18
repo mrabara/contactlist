@@ -32,11 +32,21 @@ export const FormComponent = () => {
         addContact(newContact);
         setEmail('');
         setFname('');
-        setLocation('');
+        setLocation('Select Location');
         setPhone('');
         setRegistered('');
 
     }
+
+    const cancelAdd = () =>{
+         setEmail('');
+        setFname('');
+        setLocation('Select Location');
+        setPhone('');
+        setRegistered('');
+
+    }
+
 
     return (
         <Card>
@@ -70,7 +80,7 @@ export const FormComponent = () => {
                     </Form.Group>
                     <Form.Group>
                         <div className="d-flex justify-content-between mt-5">
-                            <Button className='bg-danger'>Cancel Add</Button>
+                            <Button className='bg-danger' onClick={() => cancelAdd()}>Cancel Add</Button>
                             <Button type='submit' className='bg-success'>Add Contact</Button>
                         </div>
                     </Form.Group>
