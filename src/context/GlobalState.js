@@ -53,5 +53,12 @@ export const GlobalProvider = ({ children }) => {
         })
     }
 
-    return (<GlobalContext.Provider value={{ contacts: state.contacts, locations: state.locations, addContact }}>{ children }</GlobalContext.Provider>)
+    const editContact = (id) => {
+        dispatch({
+            type: 'EDIT_CONTACT',
+            payload: id
+        })
+    }
+
+    return (<GlobalContext.Provider value={{ contacts: state.contacts, locations: state.locations, addContact, editContact }}>{ children }</GlobalContext.Provider>)
 }

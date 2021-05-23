@@ -3,6 +3,8 @@ import { Button } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faPencilAlt, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { GlobalContext } from '../context/GlobalState';
+import { Link } from 'react-router-dom';
+
 
 export const Contacts = ({ contact }) => {
     const { viewContact } = useContext(GlobalContext);
@@ -18,7 +20,9 @@ export const Contacts = ({ contact }) => {
             <td>
                 <div className="d-flex justify-content-between">
                     <Button className='text-info btn-light' size='sm' onClick={()=> viewContact(contact.id) }> <FontAwesomeIcon icon={ faEye} /> </Button>
-                    <Button className='text-success btn-light'><FontAwesomeIcon icon={faPencilAlt} /></Button>
+                    <Link to={`/contact/${contact.id}`}>
+                        <Button className='text-success btn-light' ><FontAwesomeIcon icon={faPencilAlt} /></Button>
+                    </Link>
                     <Button className='text-danger btn-light' size='sm'> <FontAwesomeIcon icon={faTrashAlt} /> </Button>
                 </div>
             </td>
