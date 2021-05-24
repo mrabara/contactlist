@@ -25,7 +25,9 @@ export const Contacts = ({ contact }) => {
             <td>{contact.registered}</td>
             <td>
                 <div className="d-flex justify-content-between">
-                    <Button className='text-info btn-light' size='sm' onClick={()=> viewContact(contact.id) }> <FontAwesomeIcon icon={ faEye} /> </Button>
+                    <Link to={`/view/${contact.id}` }>
+                        <Button className='text-info btn-light' size='sm'> <FontAwesomeIcon icon={ faEye} /> </Button>
+                    </Link>
                     <Link to={`/contact/${contact.id}`}>
                         <Button className='text-success btn-light' ><FontAwesomeIcon icon={faPencilAlt} /></Button>
                     </Link>

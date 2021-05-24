@@ -14,7 +14,7 @@ export const FormComponent = () => {
     const onSubmit = (e) => {
         e.preventDefault();
         if (!fname && !email && !phone && !location && !registered) {
-            alert('Please don\' leave blank');
+            alert('Please don\'t leave blank');
             return;
         }
 
@@ -27,7 +27,6 @@ export const FormComponent = () => {
             registered
         }
 
-        console.log(newContact);
 
         addContact(newContact);
         setEmail('');
