@@ -2,8 +2,8 @@ import React, { useContext, useState } from 'react'
 import { Button, Card, Form } from 'react-bootstrap';
 import { GlobalContext } from '../context/GlobalState'
 
-export const EditContact = ({ match }) => {
-    const { EditContact, locations, contacts} = useContext(GlobalContext);
+export const EditContact = ({ match}) => {
+    const { EditContact, locations} = useContext(GlobalContext);
     const contactId = match.params.id;
     const [fname, setFname] = useState('');
     const [email, setEmail] = useState('');
@@ -11,18 +11,16 @@ export const EditContact = ({ match }) => {
     const [location, setLocation] = useState('');
     const [registered, setRegistered] = useState('');
     
-    const contact = contacts.filter(contact => {
-        return contact.id === contactId;
-    })
 
-    console.log(contact);
+
+
 
 
     return (
         <div className='container'>
             <div className="row">
                 <div className="col d-flex justify-content-center">
-                    <Card className='w-50 mt-5'>
+                    <Card className='w-50 mt-5 shadow'>
                         <Card.Body>
                             <Card.Title>Edit Contact</Card.Title>
                             <Form>
@@ -65,3 +63,4 @@ export const EditContact = ({ match }) => {
         </div>
     )
 }
+

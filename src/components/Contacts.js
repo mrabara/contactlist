@@ -1,14 +1,20 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { Button } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faPencilAlt, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { GlobalContext } from '../context/GlobalState';
 import { Link } from 'react-router-dom';
+import { DeleteContact } from './DeleteContact';
 
 
 export const Contacts = ({ contact }) => {
     const { viewContact } = useContext(GlobalContext);
-    
+    const [cont, setCont] = useState(contact);
+
+    const deleteContact = (contact) => {
+        setCont(contact);
+    }
+
     return (
         <tr>
             <td>{ contact.id}</td>
@@ -23,7 +29,9 @@ export const Contacts = ({ contact }) => {
                     <Link to={`/contact/${contact.id}`}>
                         <Button className='text-success btn-light' ><FontAwesomeIcon icon={faPencilAlt} /></Button>
                     </Link>
-                    <Button className='text-danger btn-light' size='sm'> <FontAwesomeIcon icon={faTrashAlt} /> </Button>
+                    <Link to={`/delete/${contact.id}`}>
+                        <Button className='text-danger btn-light' size='sm' onClick={() => deleteContact(contact) }> <FontAwesomeIcon icon={faTrashAlt} /> </Button>
+                    </Link>
                 </div>
             </td>
         </tr>
