@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { GlobalContext } from '../context/GlobalState'
-import { Button, Card, Form } from 'react-bootstrap';
+import { Button, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 export const DeleteContact = ({match, history}) => {
@@ -26,11 +26,8 @@ export const DeleteContact = ({match, history}) => {
     }, [contactId, contacts, contact ])
 
 
-    const onSubmit = (e) => {
-        e.preventDefault();
-
-        deleteContact(contactId);
-
+    const delContact = (id) => {
+        deleteContact(id);
         history.push('/');
     }
     
@@ -41,38 +38,21 @@ export const DeleteContact = ({match, history}) => {
                 <div className="col d-flex justify-content-center">
                     <Card className='w-50 mt-5 shadow'>
                         <Card.Body>
-                            <Card.Title>Edit Contact</Card.Title>
-                            <Form onSubmit={onSubmit }>
-                                <Form.Group>
-                                    <Form.Label>Full Name</Form.Label>
-                                    <Form.Control value={ fname} type='text' placeholder='Last Name, First Name Middle Initial'  />
-                                </Form.Group>
-                                <Form.Group>
-                                    <Form.Label>Email Address</Form.Label>
-                                    <Form.Control value={email } type='email' placeholder='example@email.com' />
-                                </Form.Group>
-                                <Form.Group>
-                                    <Form.Label>Contact Number</Form.Label>
-                                    <Form.Control value={ phone} type='text' placeholder='99999999999'  />
-                                </Form.Group>
-                                <Form.Group>
-                                    <Form.Label>Location</Form.Label>
-                                    <Form.Control value={location} type='text' placeholder='Location'  />
-                                </Form.Group>    
-                                <Form.Group>
-                                    <Form.Label>Registered</Form.Label>
-                                    <Form.Control value={ registered} type='text' placeholder='mm/dd/yyyy' onChange={(e)=> setRegistered(e.target.value)} />
-                                </Form.Group>
-                                <Form.Group>
-                                    <div className="d-flex justify-content-between mt-5">
-                                        <Link to='/'>
-                                            <Button className='bg-success'>Cancel Delete</Button>
-                                        </Link>
-                                        <Button type='submit' className='bg-danger'>Delete Contact</Button>
-                                    </div>
-                                </Form.Group>
-                            </Form>
+                            <Card.Title>Delete Contact</Card.Title>
+                            <p>{fname}</p>
+                            <p>{email}</p>
+                            <p>{phone}</p>
+                            <p>{location}</p>
+                            <p>{registered}</p>
                         </Card.Body>
+                        <Card.Footer>
+                            <div className="d-flex justify-content-between mt-5">
+                                <Link to='/'>
+                                    <Button className='bg-success'>Cancel Delete</Button>
+                                </Link>
+                                <Button className='bg-danger' onClick={() => delContact(contact.id) }>Delete Contact</Button>
+                            </div>
+                        </Card.Footer>
                     </Card>
                 </div>
             </div>
